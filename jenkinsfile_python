@@ -1,18 +1,6 @@
 pipeline {
-environment{
-    registry = "rinkita/docker"
-    registryCredential = 'dockerhub'
-    dockerImage = ''
-    containerId = sh(script: 'docker ps -aqf "name=node-app"', returnStdout:true)
-  }
-  
-agent none 
+    agent none 
     stages {
-        stage('Cloning Git') {
-        steps {
-        git 'https://github.com/Rinkita/simple-python-pyinstaller-app.git'
-         }
-        }
         stage('Build') { 
             agent {
                 docker {
