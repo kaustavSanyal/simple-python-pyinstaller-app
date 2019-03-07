@@ -1,5 +1,12 @@
 pipeline {
-    agent none 
+environment{
+    registry = "rinkita/docker"
+    registryCredential = 'dockerhub'
+    dockerImage = ''
+    containerId = sh(script: 'docker ps -aqf "name=node-app"', returnStdout:true)
+  }
+  
+agent none 
     stages {
         stage('Cloning Git') {
         steps {
