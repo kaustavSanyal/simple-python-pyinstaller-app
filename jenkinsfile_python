@@ -1,6 +1,11 @@
 pipeline {
     agent none 
     stages {
+        stage('Cloning Git') {
+        steps {
+        git 'https://github.com/Rinkita/simple-python-pyinstaller-app.git'
+         }
+        }
         stage('Build') { 
             agent {
                 docker {
